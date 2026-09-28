@@ -8,7 +8,7 @@
  *
  * 各环境参数见同目录 env.uat.js / env.prod.js
  */
-const ENV = 'prod';
+const ENV = 'uat';
 
 const configMap = {
   uat: require('./env.uat.js'),
