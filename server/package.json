@@ -1,0 +1,10 @@
+{
+  "name": "mall-miniprogram-pay-server",
+  "version": "1.0.0",
+  "description": "虚拟支付（个人主体·道具直购）服务端：下单双签名 / 发货推送幂等 / query_order 兜底查单。零 npm 依赖。",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "description": "UAT 环境项目配置（游客 appid，导入微信开发者工具即可运行）",
   "compileType": "miniprogram",
-  "appid": "touristappid",
+  "appid": "wx3e5e2d3eb5ab9afe",
   "projectname": "商城-UAT",
   "libVersion": "3.8.12",
   "setting": {
@@ -17,7 +17,18 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    }
+    },
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false
   },
   "condition": {},
   "editorSetting": {
@@ -26,12 +37,28 @@
   },
   "packOptions": {
     "ignore": [
-      { "type": "folder", "value": "scripts" },
-      { "type": "file", "value": "package.json" },
-      { "type": "file", "value": "README.md" },
-      { "type": "folder", "value": "project.config.uat.json" },
-      { "type": "folder", "value": "project.config.prod.json" }
+      {
+        "value": "scripts",
+        "type": "folder"
+      },
+      {
+        "value": "package.json",
+        "type": "file"
+      },
+      {
+        "value": "README.md",
+        "type": "file"
+      },
+      {
+        "value": "project.config.uat.json",
+        "type": "folder"
+      },
+      {
+        "value": "project.config.prod.json",
+        "type": "folder"
+      }
     ],
     "include": []
-  }
+  },
+  "simulatorPluginLibVersion": {}
 }

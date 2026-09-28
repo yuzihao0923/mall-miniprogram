@@ -1,5 +1,7 @@
 const request = require('../../utils/request.js');
 const cart = require('../../utils/cart.js');
+const pay = require('../../utils/pay.js');
+const env = require('../../config/env.js');
 const { formatSales, splitPrice } = require('../../utils/format.js');
 
 const COLLECT_KEY = 'mall_collect_ids';
@@ -72,7 +74,34 @@ Page({
     wx.showToast({ title: '已加入购物车', icon: 'success' });
   },
 
-  onBuyNow() {
-    wx.showToast({ title: '下单功能开发中，敬请期待', icon: 'none' });
+  async onBuyNow() {
+    if (this._buying) return;
+    this._buying = true;
+
+    try {
+      // mock 演示模式：不走真实支付
+      if (env.mockEnabled) {
+        wx.showLoading({ title: '模拟支付中…', mask: true });
+        await new Promise((r) => setTimeout(r, 800));
+        wx.hideLoading();
+        wx.showToast({ title: '演示支付成功（mock）', icon: 'none' });
+        return;
+      }
+
+      // 虚拟支付（道具直购）：productId 需在 MP 后台「道具管理」中与商品一一创建
+      wx.showLoading({ title: '创建订单…', mask: true });
+      const { outTradeNo } = await pay.buy(this.data.goods, 1, () => wx.hideLoading());
+      wx.showModal({
+        title: '支付成功',
+        content: `订单号：${outTradeNo}\n发货确认后商品将到账`,
+        showCancel: false,
+        confirmColor: '#FF5000'
+      });
+    } catch (e) {
+      wx.hideLoading();
+      wx.showToast({ title: e.message || '支付失败', icon: 'none' });
+    } finally {
+      this._buying = false;
+    }
   }
 });

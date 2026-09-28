@@ -59,6 +59,50 @@ npm run env:prod   # 切到生产（正式 appid 占位 + 生产网关）
 
 **上线前必做**：把 `project.config.prod.json` 的 `appid` 占位 `your_prod_appid` 替换为正式小程序 AppID，并在 `config/env.prod.js` 关闭 `mockEnabled`、填入真实网关域名。
 
+## 虚拟支付接入（个人主体 · 道具直购）
+
+小程序通过 `wx.requestVirtualPayment`（道具直购 `short_series_goods`）收款，前端零密钥：`paySig`（AppKey）与 `signature`（sessionKey）双签名全部由服务端生成。
+
+```
+小程序 detail 页「立即购买」
+  → wx.login(code)
+  → POST server/pay/order（服务端定价 + 双签名）
+  → wx.requestVirtualPayment 拉起收银台
+  → 微信发货推送 POST server/pay/notify（幂等 wx_order_id + 发货钩子）
+  → 兜底：服务端每 5 分钟 query_order 同步漏推送订单
+```
+
+### 前置条件（MP 后台操作）
+
+1. 小程序完成**认证 + 备案**，服务类目包含「工具」（个人主体虚拟支付开通条件）
+2. 「功能 → 虚拟支付」开通，记下 **AppID / OfferID / AppKey**
+3. 「虚拟支付 → 道具管理」中**按商品逐一创建道具**：道具 `productId` = 商品 `id`，价格与商品价一致
+4. 「开发 → 消息推送」配置发货推送 URL：`https://<你的域名>/pay/notify`
+
+### 服务端（`server/`，Node 内置模块零依赖）
+
+```bash
+cd server
+cp .env.example .env   # 填入 WX_APPID / WX_APPSECRET / WPAY_OFFER_ID / WPAY_APPKEY
+node test.js           # 自测：签名 / 幂等 / XML 解析 / 订单存储（24 项）
+npm start              # 启动 http://127.0.0.1:3000
+```
+
+| 接口 | 说明 |
+| --- | --- |
+| `POST /pay/order` | code 换 sessionKey，服务端定价（**不信任前端传价**），生成 `signData + paySig + signature` |
+| `POST /pay/notify` | 发货推送：`wx_order_id` 幂等去重、发货钩子 `server/deliver.js`、成功应答 `0`、失败非 0 触发微信退避重试 |
+| `POST /pay/query/:outTradeNo` | 主动查单（对齐 `/xpay/query_order`，`paySig` 按 `uri&body` 签名） |
+| 定时兜底 | 每 5 分钟轮询 PENDING 订单调 `query_order`，推送丢失也能自动补发货 |
+
+密钥安全：`.env` 与 `server/storage/` 已加入 `.gitignore`，真实 AppKey/AppSecret 永不入库；上线前把 `WPAY_ENV` 从 `sandbox` 切回 `production`。
+
+### 小程序侧
+
+- `utils/pay.js`：iOS 微信版本校验（< 8.0.68 提示升级）、`buy(goods, quantity, onOrderCreated)` 全流程封装
+- 详情页「立即购买」已接入；mock 模式下为演示支付，关闭 `mockEnabled` 后走真实流程
+- 联调期在开发者工具勾选「不校验合法域名」，`serverBase` 指向 `http://127.0.0.1:3000`；上线前换成备案 HTTPS 域名
+
 ## 目录结构
 
 ```

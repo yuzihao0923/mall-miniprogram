@@ -5,6 +5,10 @@ project.private.config.json
 node_modules/
 npm-debug.log*
 
+# 支付服务端密钥与本地数据（严禁提交真实 AppKey/AppSecret）
+server/.env
+server/storage/
+
 # 系统文件
 .DS_Store
 Thumbs.db
