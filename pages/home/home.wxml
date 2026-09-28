@@ -18,7 +18,10 @@
           <view class="banner-title">{{item.title}}</view>
           <view class="banner-subtitle">{{item.subtitle}}</view>
         </view>
-        <text class="banner-emoji">{{item.emoji}}</text>
+        <view class="banner-emoji">
+          <view wx:if="{{item.emoji === 'pokeball'}}" class="pokeball"></view>
+          <text wx:else>{{item.emoji}}</text>
+        </view>
       </view>
     </swiper-item>
   </swiper>
@@ -28,7 +31,8 @@
     <view class="kingkong-item" wx:for="{{kingkong}}" wx:key="index"
       bindtap="onKingkongTap" data-index="{{index}}">
       <view class="kingkong-icon">
-        <text>{{item.emoji}}</text>
+        <view wx:if="{{item.emoji === 'pokeball'}}" class="pokeball"></view>
+        <text wx:else>{{item.emoji}}</text>
       </view>
       <text class="kingkong-name">{{item.name}}</text>
     </view>

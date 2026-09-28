@@ -6,7 +6,10 @@
       class="aside-item {{activeCategory === item.id ? 'aside-item-active' : ''}}"
       bindtap="onCategoryTap" data-id="{{item.id}}">
       <view class="aside-bar" wx:if="{{activeCategory === item.id}}"></view>
-      <text class="aside-emoji">{{item.emoji}}</text>
+      <view class="aside-emoji">
+        <view wx:if="{{item.emoji === 'pokeball'}}" class="pokeball"></view>
+        <text wx:else>{{item.emoji}}</text>
+      </view>
       <text class="aside-name">{{item.name}}</text>
     </view>
   </scroll-view>
