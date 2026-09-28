@@ -70,7 +70,7 @@
 }
 
 .kingkong-item {
-  width: 20%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,14 +78,14 @@
 }
 
 .kingkong-icon {
-  width: 88rpx;
-  height: 88rpx;
+  width: 104rpx;
+  height: 104rpx;
   border-radius: 50%;
   background: #fff3ec;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 44rpx;
+  font-size: 52rpx;
 }
 
 .kingkong-name {
