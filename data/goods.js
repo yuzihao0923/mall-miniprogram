@@ -85,14 +85,14 @@ const kingkongList = [
   { id: 'basketball', name: '篮球', emoji: '🏀' },
   { id: 'football', name: '足球', emoji: '⚽' },
   { id: 'baseball', name: '棒球', emoji: '⚾' },
-  { id: 'pokemon', name: '宝可梦', emoji: '🎴' }
+  { id: 'pokemon', name: '宝可梦', emoji: '⚡' }
 ];
 
 /** 首页轮播 Banner（渐变占位） */
 const banners = [
   { id: 1, title: '篮球装备焕新季 · 直降 200', subtitle: '战靴 / 篮球 / 护具', emoji: '🏀', colors: ['#ff9a44', '#fc6076'], categoryId: 'basketball' },
   { id: 2, title: '足球专场 · 满 199 减 50', subtitle: '战靴 / 门将手套 / 球衣', emoji: '⚽', colors: ['#11998e', '#38ef7d'], categoryId: 'football' },
-  { id: 3, title: '宝可梦卡牌上新', subtitle: '补充包 / 收藏册 / 手办', emoji: '🎴', colors: ['#8e2de2', '#f953c6'], categoryId: 'pokemon' }
+  { id: 3, title: '宝可梦卡牌上新', subtitle: '补充包 / 收藏册 / 手办', emoji: '⚡', colors: ['#8e2de2', '#f953c6'], categoryId: 'pokemon' }
 ];
 
 /** 分类页左侧一级分类 */
@@ -100,7 +100,7 @@ const categories = [
   { id: 'basketball', name: '篮球', emoji: '🏀' },
   { id: 'football', name: '足球', emoji: '⚽' },
   { id: 'baseball', name: '棒球', emoji: '⚾' },
-  { id: 'pokemon', name: '宝可梦', emoji: '🎴' }
+  { id: 'pokemon', name: '宝可梦', emoji: '⚡' }
 ];
 
 /** 搜索页热搜词 */
