@@ -1,0 +1,37 @@
+{
+  "description": "生产环境项目配置（上线前把 appid 替换为正式小程序 AppID）",
+  "compileType": "miniprogram",
+  "appid": "your_prod_appid",
+  "projectname": "商城-生产",
+  "libVersion": "3.8.12",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": true,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "ignoreUploadUnusedFiles": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "packOptions": {
+    "ignore": [
+      { "type": "folder", "value": "scripts" },
+      { "type": "file", "value": "package.json" },
+      { "type": "file", "value": "README.md" },
+      { "type": "folder", "value": "project.config.uat.json" },
+      { "type": "folder", "value": "project.config.prod.json" }
+    ],
+    "include": []
+  }
+}

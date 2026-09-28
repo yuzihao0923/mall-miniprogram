@@ -1,0 +1,10 @@
+{
+  "name": "ecommerce-mall-miniprogram",
+  "version": "1.0.0",
+  "description": "淘宝式商城微信小程序（原生），支持 UAT / 生产环境隔离切换",
+  "scripts": {
+    "env:uat": "node scripts/switch-env.js uat",
+    "env:prod": "node scripts/switch-env.js prod",
+    "icons": "node scripts/gen-tabbar-icons.js"
+  }
+}

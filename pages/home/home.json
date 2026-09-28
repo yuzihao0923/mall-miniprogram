@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "好逛商城",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "goods-card": "/components/goods-card/goods-card"
+  }
+}

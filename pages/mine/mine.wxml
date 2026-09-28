@@ -1,0 +1,48 @@
+<view class="page">
+  <!-- 用户卡片 -->
+  <view class="user-card">
+    <view class="user-row">
+      <view class="avatar">👤</view>
+      <view class="user-info">
+        <view class="nickname">点击登录</view>
+        <view class="user-desc">登录后享更多权益</view>
+      </view>
+      <view class="signin-btn" bindtap="onTodoTap">签到有礼</view>
+    </view>
+    <view class="user-stats">
+      <view class="stat" bindtap="onTodoTap"><view class="stat-num">0</view><view class="stat-name">收藏</view></view>
+      <view class="stat" bindtap="onTodoTap"><view class="stat-num">0</view><view class="stat-name">足迹</view></view>
+      <view class="stat" bindtap="onTodoTap"><view class="stat-num">0</view><view class="stat-name">优惠券</view></view>
+      <view class="stat" bindtap="onTodoTap"><view class="stat-num">0.00</view><view class="stat-name">余额</view></view>
+    </view>
+  </view>
+
+  <!-- 我的订单 -->
+  <view class="panel card">
+    <view class="panel-header">
+      <text class="panel-title">我的订单</text>
+      <text class="panel-more" bindtap="onTodoTap">全部订单 ›</text>
+    </view>
+    <view class="order-grid">
+      <view class="order-item" wx:for="{{orders}}" wx:key="name" bindtap="onTodoTap">
+        <text class="order-icon">{{item.icon}}</text>
+        <text class="order-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 工具宫格 -->
+  <view class="panel card">
+    <view class="panel-header">
+      <text class="panel-title">常用工具</text>
+    </view>
+    <view class="tool-grid">
+      <view class="tool-item" wx:for="{{tools}}" wx:key="name" bindtap="onTodoTap">
+        <text class="tool-icon">{{item.icon}}</text>
+        <text class="tool-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="env-note">当前演示环境数据为本地 Mock</view>
+</view>

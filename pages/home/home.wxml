@@ -1,0 +1,67 @@
+<!-- 首页：搜索栏 + 轮播 + 金刚区 + 分类 chips + 瀑布流 -->
+
+<view class="page">
+  <!-- 搜索栏（假输入框，点击进搜索页） -->
+  <view class="search-bar" bindtap="onSearchTap">
+    <view class="search-input">
+      <text class="search-icon">🔍</text>
+      <text class="search-placeholder">搜索商品 / 店铺</text>
+    </view>
+  </view>
+
+  <!-- 轮播 Banner -->
+  <swiper class="banner" indicator-dots indicator-color="rgba(255,255,255,0.5)"
+    indicator-active-color="#ffffff" autoplay circular interval="4000">
+    <swiper-item wx:for="{{banners}}" wx:key="id" bindtap="onBannerTap" data-index="{{index}}">
+      <view class="banner-item" style="background: linear-gradient(120deg, {{item.colors[0]}}, {{item.colors[1]}});">
+        <view class="banner-text">
+          <view class="banner-title">{{item.title}}</view>
+          <view class="banner-subtitle">{{item.subtitle}}</view>
+        </view>
+        <text class="banner-emoji">{{item.emoji}}</text>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 金刚区 -->
+  <view class="kingkong card">
+    <view class="kingkong-item" wx:for="{{kingkong}}" wx:key="index"
+      bindtap="onKingkongTap" data-index="{{index}}">
+      <view class="kingkong-icon">
+        <text>{{item.emoji}}</text>
+      </view>
+      <text class="kingkong-name">{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 分类 chips -->
+  <scroll-view class="chips" scroll-x enhanced show-scrollbar="{{false}}">
+    <view
+      wx:for="{{chips}}" wx:key="id"
+      class="chip {{activeCategory === item.id ? 'chip-active' : ''}}"
+      bindtap="onChipTap" data-id="{{item.id}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!-- 瀑布流双列 -->
+  <view class="waterfall">
+    <view class="column">
+      <block wx:for="{{leftList}}" wx:key="id">
+        <goods-card goods="{{item}}" />
+      </block>
+    </view>
+    <view class="column">
+      <block wx:for="{{rightList}}" wx:key="id">
+        <goods-card goods="{{item}}" />
+      </block>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="load-more">
+    <text wx:if="{{loading}}">加载中…</text>
+    <text wx:elif="{{!hasMore}}">— 已经到底啦 —</text>
+    <text wx:else> </text>
+  </view>
+</view>

@@ -1,0 +1,89 @@
+<view class="page" wx:if="{{goods}}">
+  <!-- 顶部图集：渐变占位轮播 -->
+  <view class="gallery">
+    <swiper class="gallery-swiper" circular bindchange="onBannerChange">
+      <swiper-item wx:for="{{[0, 1, 2]}}" wx:key="*this" wx:for-item="frame">
+        <view class="gallery-item"
+          style="background: linear-gradient({{index === 1 ? 45 : 135}}deg, {{goods.colors[0]}}, {{goods.colors[1]}});">
+          <text class="gallery-emoji">{{goods.emoji}}</text>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="gallery-index">{{current + 1}}/3</view>
+  </view>
+
+  <!-- 价格区 -->
+  <view class="price-card">
+    <view class="price-row">
+      <view class="price">
+        <text class="symbol">{{priceParts.symbol}}</text>
+        <text class="integer big">{{priceParts.integer}}</text>
+        <text wx:if="{{priceParts.decimal}}" class="integer">{{priceParts.decimal}}</text>
+      </view>
+      <text class="price-origin">原价 ¥{{originPriceText}}</text>
+      <view class="price-badge">已售{{salesText}}件</view>
+    </view>
+    <view class="promo">🧨 限时直降 · 满两件再享 9 折</view>
+  </view>
+
+  <!-- 标题 -->
+  <view class="title-card">
+    <view class="title">{{goods.title}}</view>
+    <view class="tag-row">
+      <text class="tag" wx:for="{{goods.tags}}" wx:key="*this">{{item}}</text>
+    </view>
+    <view class="ship-row">📦 {{goods.province}} · 快递免邮 · 48小时内发货</view>
+  </view>
+
+  <!-- 服务保障 -->
+  <view class="service-card">
+    <view class="service-item"><text class="service-emoji">✅</text>正品保障</view>
+    <view class="service-item"><text class="service-emoji">🚀</text>极速发货</view>
+    <view class="service-item"><text class="service-emoji">↩️</text>7天无理由</view>
+    <view class="service-item"><text class="service-emoji">🛡️</text>运费险</view>
+  </view>
+
+  <!-- 店铺 -->
+  <view class="shop-card">
+    <view class="shop-avatar">{{goods.shop[0]}}</view>
+    <view class="shop-info">
+      <view class="shop-name ellipsis">{{goods.shop}}</view>
+      <view class="shop-desc">正品保障 · 粉丝 12.8万</view>
+    </view>
+    <view class="shop-btn">进店</view>
+  </view>
+
+  <!-- 图文详情 -->
+  <view class="detail-section">
+    <view class="detail-title">—— 商品详情 ——</view>
+    <view class="detail-img"
+      wx:for="{{[0, 1]}}" wx:key="*this"
+      style="background: linear-gradient(135deg, {{goods.colors[index]}}, {{goods.colors[1 - index]}}); height: {{600 - index * 120}}rpx;">
+      <text class="detail-img-emoji">{{goods.emoji}}</text>
+    </view>
+    <view class="detail-text">
+      这是一件优质好物：{{goods.title}}。精选材质，匠心工艺，值得信赖。
+    </view>
+  </view>
+
+  <view class="bottom-placeholder"></view>
+
+  <!-- 底部操作栏 -->
+  <view class="action-bar">
+    <view class="action-icon" bindtap="onService">
+      <text class="action-emoji">💬</text>
+      <text class="action-label">客服</text>
+    </view>
+    <view class="action-icon" bindtap="onToggleCollect">
+      <text class="action-emoji">{{collected ? '❤️' : '🤍'}}</text>
+      <text class="action-label">收藏</text>
+    </view>
+    <view class="action-icon" bindtap="onCartEntry">
+      <text class="action-emoji">🛒</text>
+      <text class="action-label">购物车</text>
+      <view class="action-badge" wx:if="{{cartCount > 0}}">{{cartCount > 99 ? '99+' : cartCount}}</view>
+    </view>
+    <view class="action-btn btn-cart" bindtap="onAddCart">加入购物车</view>
+    <view class="action-btn btn-buy" bindtap="onBuyNow">立即购买</view>
+  </view>
+</view>

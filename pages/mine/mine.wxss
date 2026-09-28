@@ -1,0 +1,150 @@
+.page {
+  padding-bottom: 40rpx;
+}
+
+/* ===== 用户卡片 ===== */
+.user-card {
+  background: linear-gradient(135deg, #FF7000, #FF5000);
+  padding: 48rpx 32rpx 32rpx;
+  border-radius: 0 0 32rpx 32rpx;
+  color: #fff;
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64rpx;
+}
+
+.user-info {
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.user-desc {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  opacity: 0.85;
+}
+
+.signin-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: #FF5000;
+  font-size: 24rpx;
+  font-weight: 600;
+  border-radius: 999rpx;
+  padding: 12rpx 28rpx;
+}
+
+/* 统计 */
+.user-stats {
+  margin-top: 36rpx;
+  display: flex;
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.stat-name {
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  opacity: 0.85;
+}
+
+/* ===== 面板 ===== */
+.panel {
+  margin: 20rpx 16rpx 0;
+  padding: 24rpx;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.panel-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.panel-more {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 订单 */
+.order-grid {
+  display: flex;
+}
+
+.order-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-icon {
+  font-size: 48rpx;
+}
+
+.order-name {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #555;
+}
+
+/* 工具 */
+.tool-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tool-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28rpx;
+}
+
+.tool-icon {
+  font-size: 44rpx;
+}
+
+.tool-name {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #555;
+}
+
+.env-note {
+  text-align: center;
+  color: #bbb;
+  font-size: 22rpx;
+  margin-top: 24rpx;
+}

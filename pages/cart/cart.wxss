@@ -1,0 +1,166 @@
+.page {
+  padding: 16rpx;
+}
+
+/* ===== 空状态 ===== */
+.go-shop {
+  margin: 40rpx auto 0;
+  width: 240rpx;
+  background: linear-gradient(90deg, #FF7000, #FF5000);
+  color: #fff;
+  border-radius: 999rpx;
+  padding: 16rpx 0;
+  font-size: 28rpx;
+}
+
+/* ===== 商品行 ===== */
+.cart-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.check {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  border: 2rpx solid #ccc;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.check-on {
+  background: #FF5000;
+  border-color: #FF5000;
+}
+
+.thumb {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
+  margin: 0 20rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb-emoji {
+  font-size: 72rpx;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+  margin-right: 40rpx;
+}
+
+.title {
+  font-size: 26rpx;
+  line-height: 36rpx;
+}
+
+.spec {
+  display: inline-block;
+  font-size: 22rpx;
+  color: #999;
+  background: #f5f5f5;
+  border-radius: 6rpx;
+  padding: 4rpx 12rpx;
+  margin: 10rpx 0;
+}
+
+.bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price .decimal {
+  font-size: 24rpx;
+}
+
+/* 步进器 */
+.stepper {
+  display: flex;
+  align-items: center;
+  border: 1rpx solid #eee;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.step-btn {
+  width: 52rpx;
+  height: 48rpx;
+  line-height: 44rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #333;
+  background: #fafafa;
+}
+
+.step-disabled {
+  color: #ccc;
+}
+
+.step-num {
+  min-width: 64rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.remove {
+  position: absolute;
+  right: 16rpx;
+  top: 16rpx;
+  font-size: 30rpx;
+  padding: 8rpx;
+}
+
+/* ===== 结算栏 ===== */
+.bottom-placeholder {
+  height: 130rpx;
+}
+
+.settle-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx calc(16rpx + env(safe-area-inset-bottom));
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.all-label {
+  margin-left: 12rpx;
+  font-size: 26rpx;
+  color: #555;
+}
+
+.total-box {
+  margin-left: auto;
+  margin-right: 20rpx;
+  font-size: 26rpx;
+  display: flex;
+  align-items: baseline;
+}
+
+.settle-btn {
+  background: linear-gradient(90deg, #FF7000, #FF5000);
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: 600;
+  border-radius: 999rpx;
+  padding: 18rpx 48rpx;
+}

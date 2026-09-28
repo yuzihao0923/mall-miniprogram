@@ -1,0 +1,37 @@
+{
+  "description": "UAT 环境项目配置（游客 appid，导入微信开发者工具即可运行）",
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "商城-UAT",
+  "libVersion": "3.8.12",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": false,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "ignoreUploadUnusedFiles": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "packOptions": {
+    "ignore": [
+      { "type": "folder", "value": "scripts" },
+      { "type": "file", "value": "package.json" },
+      { "type": "file", "value": "README.md" },
+      { "type": "folder", "value": "project.config.uat.json" },
+      { "type": "folder", "value": "project.config.prod.json" }
+    ],
+    "include": []
+  }
+}

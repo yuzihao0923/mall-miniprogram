@@ -1,0 +1,28 @@
+<view class="goods-card" bindtap="onTap">
+  <!-- 占位图：渐变 + emoji -->
+  <view class="thumb" style="{{imgStyle}}">
+    <text class="thumb-emoji">{{goods.emoji}}</text>
+  </view>
+
+  <view class="info">
+    <view class="title ellipsis-2">{{goods.title}}</view>
+
+    <view class="tags" wx:if="{{goods.tags && goods.tags.length}}">
+      <text class="tag" wx:for="{{goods.tags}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <view class="price-row">
+      <view class="price">
+        <text class="symbol">{{priceParts.symbol}}</text>
+        <text class="integer">{{priceParts.integer}}</text>
+        <text wx:if="{{priceParts.decimal}}" class="integer decimal">{{priceParts.decimal}}</text>
+      </view>
+      <text class="price-origin" wx:if="{{originPriceText}}">¥{{originPriceText}}</text>
+    </view>
+
+    <view class="meta-row">
+      <text class="sales">已售{{salesText}}件</text>
+      <text class="shop ellipsis">{{goods.shop}}</text>
+    </view>
+  </view>
+</view>

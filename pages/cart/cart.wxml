@@ -1,0 +1,70 @@
+<view class="page">
+  <!-- 空购物车 -->
+  <view wx:if="{{items.length === 0}}" class="empty">
+    <view class="empty-icon">🛒</view>
+    <view>购物车还是空的</view>
+    <view class="go-shop" bindtap="onGoHome">去逛逛</view>
+  </view>
+
+  <!-- 购物车列表 -->
+  <block wx:else>
+    <view class="cart-list">
+      <view class="cart-item" wx:for="{{items}}" wx:key="index">
+        <!-- 选择圈 -->
+        <view class="check {{item.selected ? 'check-on' : ''}}"
+          bindtap="onToggleSelect" data-id="{{item.id}}" data-spec="{{item.spec}}">
+          <text wx:if="{{item.selected}}">✓</text>
+        </view>
+
+        <!-- 缩略图 -->
+        <view class="thumb"
+          style="background: linear-gradient(135deg, {{item.colors[0]}}, {{item.colors[1]}});">
+          <text class="thumb-emoji">{{item.emoji}}</text>
+        </view>
+
+        <!-- 信息 -->
+        <view class="info">
+          <view class="title ellipsis-2">{{item.title}}</view>
+          <view class="spec">{{item.spec}}</view>
+          <view class="bottom-row">
+            <view class="price">
+              <text class="symbol">{{item.priceParts.symbol}}</text>
+              <text class="integer">{{item.priceParts.integer}}</text>
+              <text wx:if="{{item.priceParts.decimal}}" class="decimal">{{item.priceParts.decimal}}</text>
+            </view>
+            <view class="stepper">
+              <view class="step-btn {{item.num <= 1 ? 'step-disabled' : ''}}"
+                catchtap="onMinus" data-id="{{item.id}}" data-spec="{{item.spec}}" data-num="{{item.num}}">−</view>
+              <view class="step-num">{{item.num}}</view>
+              <view class="step-btn"
+                catchtap="onPlus" data-id="{{item.id}}" data-spec="{{item.spec}}" data-num="{{item.num}}">+</view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 删除 -->
+        <view class="remove" catchtap="onRemove"
+          data-id="{{item.id}}" data-spec="{{item.spec}}" data-title="{{item.title}}">🗑️</view>
+      </view>
+    </view>
+
+    <!-- 底部结算栏 -->
+    <view class="bottom-placeholder"></view>
+    <view class="settle-bar">
+      <view class="check all {{allSelected ? 'check-on' : ''}}" bindtap="onToggleAll">
+        <text wx:if="{{allSelected}}">✓</text>
+      </view>
+      <text class="all-label">全选</text>
+      <view class="total-box">
+        <text>合计：</text>
+        <view class="price">
+          <text class="symbol">¥</text>
+          <text class="integer">{{total}}</text>
+        </view>
+      </view>
+      <view class="settle-btn" bindtap="onCheckout">
+        结算{{count > 0 ? '(' + count + ')' : ''}}
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,37 @@
+<view class="page">
+  <!-- 左侧一级分类 -->
+  <scroll-view class="aside" scroll-y>
+    <view
+      wx:for="{{categories}}" wx:key="id"
+      class="aside-item {{activeCategory === item.id ? 'aside-item-active' : ''}}"
+      bindtap="onCategoryTap" data-id="{{item.id}}">
+      <view class="aside-bar" wx:if="{{activeCategory === item.id}}"></view>
+      <text class="aside-emoji">{{item.emoji}}</text>
+      <text class="aside-name">{{item.name}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 右侧商品 -->
+  <scroll-view class="content" scroll-y>
+    <view wx:if="{{loading}}" class="empty">
+      <view class="empty-icon">⏳</view>
+      <view>加载中…</view>
+    </view>
+
+    <block wx:else>
+      <view wx:if="{{leftList.length === 0 && rightList.length === 0}}" class="empty">
+        <view class="empty-icon">🛒</view>
+        <view>该分类暂无商品</view>
+      </view>
+
+      <view class="grid" wx:else>
+        <view class="grid-col">
+          <goods-card wx:for="{{leftList}}" wx:key="id" goods="{{item}}" />
+        </view>
+        <view class="grid-col">
+          <goods-card wx:for="{{rightList}}" wx:key="id" goods="{{item}}" />
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>

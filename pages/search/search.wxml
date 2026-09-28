@@ -1,0 +1,67 @@
+<view class="page">
+  <!-- 搜索框 -->
+  <view class="search-header">
+    <view class="search-box">
+      <text class="search-icon">🔍</text>
+      <input
+        class="search-input"
+        value="{{keyword}}"
+        placeholder="搜索商品 / 店铺"
+        confirm-type="search"
+        focus
+        bindinput="onInput"
+        bindconfirm="onConfirm" />
+    </view>
+    <view class="search-btn" bindtap="onConfirm">搜索</view>
+  </view>
+
+  <!-- 默认视图：历史 + 热搜 -->
+  <block wx:if="{{!searched}}">
+    <view class="section" wx:if="{{history.length}}">
+      <view class="section-header">
+        <text class="section-title">最近搜索</text>
+        <text class="section-clear" bindtap="onClearHistory">🗑️ 清空</text>
+      </view>
+      <view class="tag-wrap">
+        <view class="tag" wx:for="{{history}}" wx:key="*this"
+          bindtap="onHotTap" data-kw="{{item}}">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">热搜发现</text>
+      </view>
+      <view class="tag-wrap">
+        <view class="tag tag-hot" wx:for="{{hotKeywords}}" wx:key="*this"
+          bindtap="onHotTap" data-kw="{{item}}">
+          <text wx:if="{{index < 3}}" class="tag-rank">{{index + 1}}</text>{{item}}
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 搜索结果 -->
+  <block wx:else>
+    <view class="result-bar">共 <text class="result-count">{{resultCount}}</text> 件相关商品</view>
+
+    <view wx:if="{{leftList.length === 0 && rightList.length === 0 && !loading}}" class="empty">
+      <view class="empty-icon">🔍</view>
+      <view>没有找到相关商品，换个关键词试试</view>
+    </view>
+
+    <view class="waterfall" wx:else>
+      <view class="column">
+        <goods-card wx:for="{{leftList}}" wx:key="id" goods="{{item}}" />
+      </view>
+      <view class="column">
+        <goods-card wx:for="{{rightList}}" wx:key="id" goods="{{item}}" />
+      </view>
+    </view>
+
+    <view class="load-more">
+      <text wx:if="{{loading}}">加载中…</text>
+      <text wx:elif="{{!hasMore && leftList.length}}">— 已经到底啦 —</text>
+    </view>
+  </block>
+</view>
